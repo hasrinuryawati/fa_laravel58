@@ -8,5 +8,5 @@ services:
     volumes:
       - .:/var/www
     ports:
-      - "8000:8000"
+      - "80:80"
     command: php -S 0.0.0.0:80 -t public
