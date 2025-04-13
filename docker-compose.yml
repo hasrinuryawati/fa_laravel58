@@ -2,10 +2,11 @@ version: '3.8'
 
 services:
   app:
-    image: php:7.4
+    build: .
     container_name: laravel58
     working_dir: /var/www
     volumes:
       - .:/var/www
-    command: bash -c "composer install --ignore-platform-reqs -vvv"
-
+    ports:
+      - "8000:8000"
+    command: php -S 0.0.0.0:8000 -t public
