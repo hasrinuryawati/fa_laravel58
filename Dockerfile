@@ -32,13 +32,6 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && chmod -R 775 storage bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache
 
-# Serve app
+# Expose port and run Laravel server
 EXPOSE 80
-CMD php artisan storage:link && php artisan serve --host=0.0.0.0 --port=80
-
-# Tambahkan Node.js dan npm
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get install -y nodejs
-
-# Install dan build asset
-RUN npm install && npm run prod
+CMD php artisan key:generate && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=80
