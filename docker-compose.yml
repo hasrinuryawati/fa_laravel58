@@ -4,7 +4,7 @@ services:
   app:
     build: .
     container_name: laravel58
-    working_dir: /var/www
+    working_dir: /var/www/public
     volumes:
       - .:/var/www
     ports:

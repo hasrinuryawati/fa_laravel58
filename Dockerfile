@@ -20,7 +20,10 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+WORKDIR /var/www/public
+
 WORKDIR /var/www
+
 COPY . /var/www
 
 COPY .env.example .env
@@ -30,5 +33,4 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
-
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80", "--public=/var/www/public"]
