@@ -33,4 +33,5 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && chown -R www-data:www-data storage bootstrap/cache
 
 EXPOSE 80
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80", "--public=/var/www/public"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
+
