@@ -34,4 +34,4 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 
 # Serve app
 EXPOSE 80
-CMD php artisan storage:link && php artisan serve --host=0.0.0.0 --port=80
+CMD php artisan serve --host=0.0.0.0 --port=80 --public=public
