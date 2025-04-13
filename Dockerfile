@@ -21,3 +21,16 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www
+
+# Install dependencies
+COPY . /var/www
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Expose port 80
+EXPOSE 80
+
+# Start PHP built-in server
+CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]
