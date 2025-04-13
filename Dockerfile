@@ -25,15 +25,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy the application files
+# Install dependencies
 COPY . /var/www
-
-# Install Laravel dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Cache Laravel config and routes
-RUN php artisan config:cache
-RUN php artisan route:cache
 
 # Expose port 80
 EXPOSE 80
