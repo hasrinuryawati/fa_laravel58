@@ -1,6 +1,5 @@
 FROM php:7.4
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
@@ -17,20 +16,18 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && docker-php-ext-configure zip \
     && docker-php-ext-configure gd --with-jpeg --with-freetype \
-    && docker-php-ext-install zip pdo pdo_mysql mbstring bcmath gd intl xml
+    && docker-php-ext-install zip mbstring bcmath gd intl xml
 
-# Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Set working directory
 WORKDIR /var/www
-
-# Install dependencies
 COPY . /var/www
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Expose port 80
+COPY .env.example .env
+
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
+    && chmod -R 775 storage bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
+
 EXPOSE 80
-
-# Start PHP built-in server
 CMD ["php", "-S", "0.0.0.0:80", "-t", "public"]
