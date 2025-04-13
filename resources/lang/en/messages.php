@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'movies' => 'Movies',
+    'my_favorite' => 'My Favorite',
+    'search_title' => 'Search Title',
+    'all_types' => 'All Types',
+    'search' => 'Search',
+    'reset_filter' => 'Reset Filter',
+    'favorite_movies' => 'Favorite Movies',
+    'back_to_movie' => 'Back to Movie',
+    'detail' => 'Detail',
+    'year' => 'Year',
+    'released' => 'Released',
+    'runtime' => 'Runtime',
+    'genre' => 'Genre',
+    'type' => 'Type',
+    'director' => 'Director',
+    'writer' => 'Writer',
+    'actors' => 'Actors',
+    'language' => 'Language',
+    'country' => 'Country',
+    'awards' => 'Awards',
+    'rating' => 'Rating',
+    'votes' => 'Votes',
+    'box_office' => 'Box Office',
+    'plot' => 'Plot',
+];

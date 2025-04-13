@@ -1,0 +1,32 @@
+.card {
+    height: 100%; /* Buat semua card tingginya penuh dalam kolom */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 300px; /* Atur tinggi poster biar konsisten */
+}
+
+.card-body {
+    flex-grow: 1; /* Isi konten mengambil ruang tersisa */
+}
+
+.card-footer {
+    margin-top: auto; /* Posisikan footer di bawah */
+}
+
+h5.fw-bolder {
+    min-height: 3em; /* Biarkan judul punya ruang tetap */
+}
+
+/* Card hover effect to signal interactivity */
+.card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}

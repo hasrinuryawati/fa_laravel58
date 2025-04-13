@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'movies' => 'Film',
+    'my_favorite' => 'Favoritku',
+    'search_title' => 'Cari Judul',
+    'all_types' => 'Semua Jenis',
+    'search' => 'Cari',
+    'reset_filter' => 'Setel Ulang Filter',
+    'favorite_movies' => 'Film Favorit',
+    'back_to_movie' => 'Kembali ke Film',
+    'detail' => 'Detil',
+    'year' => 'Tahun',
+    'released' => 'Dirilis',
+    'runtime' => 'Durasi',
+    'genre' => 'Genre',
+    'type' => 'Jenis',
+    'director' => 'Sutradara',
+    'writer' => 'Penulis',
+    'actors' => 'Aktor',
+    'language' => 'Bahasa',
+    'country' => 'Kota',
+    'awards' => 'Penghargaan',
+    'rating' => 'Peringkat',
+    'votes' => 'Vote',
+    'box_office' => 'Box Office',
+    'plot' => 'Alur Cerita',
+];
