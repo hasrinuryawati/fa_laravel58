@@ -35,3 +35,10 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 # Serve app
 EXPOSE 80
 CMD php artisan storage:link && php artisan serve --host=0.0.0.0 --port=80
+
+# Tambahkan Node.js dan npm
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
+
+# Install dan build asset
+RUN npm install && npm run prod
