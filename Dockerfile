@@ -25,7 +25,6 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copy project files
 WORKDIR /var/www
 COPY . /var/www
-COPY .env.example .env
 
 # Install PHP dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
@@ -34,4 +33,4 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 
 # Expose port and run Laravel server
 EXPOSE 8000
-CMD php artisan key:generate && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan key:generate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
