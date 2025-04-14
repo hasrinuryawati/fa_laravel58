@@ -26,6 +26,16 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 COPY . /var/www
 
+# Buat file .env secara manual (minimal)
+RUN echo "APP_NAME=Laravel\n\
+APP_ENV=production\n\
+APP_KEY=\n\
+APP_DEBUG=false\n\
+APP_URL=https://superb-angeline-1personal0-2ab2cd6b.koyeb.app\n\
+OMDB_API_KEY=ba019eb5\n\
+LOG_CHANNEL=stack\n\
+DB_CONNECTION=sqlite" > /var/www/.env
+
 # Install PHP dependencies
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && chmod -R 775 storage bootstrap/cache \
