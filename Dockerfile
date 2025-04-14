@@ -22,11 +22,13 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy project files
+# Set workdir
 WORKDIR /var/www
+
+# Copy project files
 COPY . /var/www
 
-# Buat file .env secara manual (minimal)
+# Set .env manually (sementara, kalau belum pakai env var di Koyeb)
 RUN echo "APP_NAME=Laravel\n\
 APP_ENV=production\n\
 APP_KEY=\n\
@@ -41,6 +43,10 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
     && chmod -R 775 storage bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache
 
-# Expose port and run Laravel server
+# Expose port
 EXPOSE 8000
-CMD php artisan key:generate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=8000
+
+# Jalankan Laravel + serve dari folder public
+CMD php artisan key:generate --force \
+    && php artisan storage:link \
+    && php -S 0.0.0.0:8000 -t public
