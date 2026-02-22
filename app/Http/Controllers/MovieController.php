@@ -98,7 +98,7 @@ class MovieController extends Controller
             ];
         }
 
-        session(['favorites' => $fav]);
+        session(['favorites' => $favorites]);
 
         return response()->json([
             'status' => 'success',
