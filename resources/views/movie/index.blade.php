@@ -106,7 +106,7 @@
                                     <form method="POST" action="/favorites" class="fav-form" style="display:inline;">
                                         {{ csrf_field() }}
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                                            <input type="hidden" name="movie_id" value="{{ $movie['imdbID'] }}">
+                                            <input type="hidden" name="movie_id" value="{{ $movie->imdbID }}">
                                             <input type="hidden" name="poster" value="{{ $movie['Poster'] }}">
                                             <input type="hidden" name="title" value="{{ $movie['Title'] }}">
 
