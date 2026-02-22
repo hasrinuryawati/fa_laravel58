@@ -112,6 +112,6 @@ class MovieController extends Controller
         unset($favorites[$id]);
         session(['favorites' => $favorites]);
 
-        return redirect()->back();
+        return redirect()->back()
     }
 }
