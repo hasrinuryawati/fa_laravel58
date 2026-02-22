@@ -98,7 +98,7 @@ class MovieController extends Controller
             ];
         }
 
-        session(['favorites' => $favorites]);
+        session(['favorites' => $fav]);
 
         return response()->json([
             'status' => 'success',
@@ -112,6 +112,6 @@ class MovieController extends Controller
         unset($favorites[$id]);
         session(['favorites' => $favorites]);
 
-        return redirect()->back()
+        return redirect()->back();
     }
 }
