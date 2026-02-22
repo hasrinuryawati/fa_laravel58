@@ -15,4 +15,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . -f Dockerfile -t my-image-name:latest
+      
+    - name: Run Container
+      run: docker run -d -p 8000:8000 --name test-app my-image-name:latest
+
+    # 4️⃣ tunggu app nyala (penting!)
+    - name: Wait for app
+      run: sleep 10
+
+    # 5️⃣ hit endpoint biar Blade ke-render
+    - name: Test Endpoint
+      run: curl --fail http://localhost:8000
+
+    # 6️⃣ stop container walaupun fail
+    - name: Stop Container
+      if: always()
+      run: docker stop test-app
